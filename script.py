@@ -24,9 +24,7 @@ for container in containers:
 
 output = pd.DataFrame({"Country": country_list, "Cost of Living in USD": costs_list})
 output["Cost of Living in USD"] = output["Cost of Living in USD"].astype("int")
-#print(output)
 df_cost = output
-#print(df_cost)
 
 main.upload("costs", output)
 
@@ -48,10 +46,8 @@ for container in containers:
 
 output = pd.DataFrame({"Country": country_list, "Avg. monthly Income in USD": income_list})
 output["Avg. monthly Income in USD"] = output["Avg. monthly Income in USD"].astype("int")
-#print(output)
 print(output.dtypes)
 df_income = output
-#print(df_income)
 
 main.upload("salary", output)
 
@@ -74,14 +70,11 @@ for container in containers:
 
 output = pd.DataFrame({"Country": country_list, "Happiness": happy_list})
 output["Happiness"] = output["Happiness"].astype("float")
-#print(output)
 df_happy = output
-#print(df_happy)
 
 main.upload("happy", output)
 
 
 df_1 = main.merge(df_cost, df_income)
 df_2 = main.merge(df_1, df_happy)
-print(df_2)
 main.upload("data", df_2)
